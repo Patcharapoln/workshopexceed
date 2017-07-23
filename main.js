@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var link = "http://158.108.165.223/data/wzc/";
-  var door,air,light,lux;
+  var door,air,light;
   function setDoor(i) {
     if(i!==1 && i!==0 && i!==-1) {
       console.error("Invalid int for setDoor.");
@@ -133,7 +133,7 @@ $(document).ready(function() {
     $.ajax({
       url: link+"ar_lux"
     }).done(function(data) {
-        light = data;
+        if(data.length > 0) $("#lumen").html("Light : "+data+);
     }).fail(function() {
         console.error("getLux: Cannot connect to server.");
       }
@@ -146,6 +146,7 @@ $(document).ready(function() {
     getAir();
     getTemp();
     getLight();
+    getLux()
   };
 
   getData();
