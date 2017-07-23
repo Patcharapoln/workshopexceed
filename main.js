@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var link = "http://158.108.165.223/data/wzc/";
-  var people,temp,door,air,temp,light,lux;
+  var door,air,light,lux;
   function setDoor(i) {
     if(i!==1 && i!==0 && i!==-1) {
       console.error("Invalid int for setDoor.");
@@ -69,6 +69,7 @@ $(document).ready(function() {
     $.ajax({
       url: link+"ar_door"
     }).done(function(data) {
+        door = data;
         if(data === "1") {
           $("#door").attr("src","./door1.png");
         }
@@ -85,6 +86,7 @@ $(document).ready(function() {
     $.ajax({
       url: link+"ar_air"
     }).done(function(data) {
+      air = data;
       if(data === "1") {
         $("#air").attr("src","./air1.png");
       }
@@ -114,6 +116,7 @@ $(document).ready(function() {
     $.ajax({
       url: link+"ar_light"
     }).done(function(data) {
+      light = data;
       if(data === "1") {
         $("#light").attr("src","./bulb1.png");
       }
@@ -147,7 +150,20 @@ $(document).ready(function() {
 
   getData();
 
+  $("#door").click(function() {
+    if(door == 0) setDoor(1);
+    else setDoor(0);
+  });
 
+  $("#light").click(function() {
+    if(light == 0) setLight(1);
+    else setLight(0);
+  });
+
+  $("#air").click(function() {
+    if(air == 0) setAir(1);
+    else setAir(0);
+  });
 
   setInterval(getData,1000);
 });
