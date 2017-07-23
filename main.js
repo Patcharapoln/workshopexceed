@@ -121,7 +121,7 @@ $(document).ready(function() {
         $("#light").attr("src","./bulb1.png");
       }
       if(data === "0") {
-        $("#light").attr("src","./abulb0.png");
+        $("#light").attr("src","./bulb0.png");
       }
     }).fail(function() {
         console.error("getLight: Cannot connect to server.");
