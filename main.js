@@ -103,9 +103,7 @@ $(document).ready(function() {
     $.ajax({
       url: link+"ar_temp"
     }).done(function(data) {
-      if(data != null) {
         $("#temp").html("Temperature : "+data+" ℃");
-      }
     }).fail(function() {
         console.error("getTemp: Cannot connect to server.");
       }
@@ -133,7 +131,9 @@ $(document).ready(function() {
     $.ajax({
       url: link+"ar_lux"
     }).done(function(data) {
-        if(data.length > 0) $("#lumen").html("Light : "+data+);
+        if(data.length > 0){
+          $("#lumen").html("Light : "+data);
+        }
     }).fail(function() {
         console.error("getLux: Cannot connect to server.");
       }
